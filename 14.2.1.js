@@ -12,8 +12,8 @@ const xmlList = `
   </student>
   <student>
     <name lang="ru">
-      <first>Петр</first>
-      <second>Петров</second>
+      <first>РџРµС‚СЂ</first>
+      <second>РџРµС‚СЂРѕРІ</second>
     </name>
     <age>58</age>
     <prof>driver</prof>
@@ -21,13 +21,16 @@ const xmlList = `
 </list>
 `;
 
-const xmlDOM = parser.parseFromString(xmlList, "text/xml")
+const xmlDOM = parser.parseFromString(xmlList, "text/xml");
 // console.log(xmlDOM);
 
-const xmlDOMArray = xmlDOM.querySelectorAll("student")
-// console.log(xmlDOMArray)
+const xmlDOMList = xmlDOM.querySelectorAll("student");
+const interimArr = [];
+const propName = xmlDOM.firstChild.nodeName
+const resultObject = {
+ }
 
-for (let studentNode of xmlDOMArray) {
+for (let studentNode of xmlDOMList) {
   const nameNode = studentNode.querySelector("name");
   const firstNode = nameNode.querySelector("first");
   const secondNode = nameNode.querySelector("second");
@@ -36,11 +39,13 @@ for (let studentNode of xmlDOMArray) {
   const langAttr = nameNode.getAttribute("lang");
   
   const result = {
-    firstName: firstNode.textContent,
-    secondName: secondNode.textContent,
+    name: firstNode.textContent + " " + secondNode.textContent,
     lang: langAttr,
     age: Number(ageNode.textContent),
     prof: profNode.textContent
   }
-  console.log('result', result)
+  // console.log('result', result)
+  interimArr.push(result)
 }
+resultObject[xmlDOM.firstChild.nodeName] = interimArr
+console.log(resultObject)
