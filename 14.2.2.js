@@ -15,4 +15,8 @@ const jsonString = `
 }
 `;
 const data = JSON.parse(jsonString);
-console.log('data', data);
+const list = data.list;
+list.forEach(function(item) {
+  item.age = Number(item.age)
+})
+console.log(data);
