@@ -15,8 +15,10 @@ const jsonString = `
 }
 `;
 const data = JSON.parse(jsonString);
-const list = data.list;
-list.forEach(function(item) {
-  item.age = Number(item.age)
-})
+// Всё, что закомментировано ниже этой строчки - можно не писать :) JSON.parse сразу возвращает валидный JS-объект, который и является ответом на задачу
+
+// const list = data.list;
+// list.forEach(function(item) {
+//   item.age = Number(item.age)
+// })
 console.log(data);
